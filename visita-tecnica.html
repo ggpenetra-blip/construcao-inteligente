@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visita Técnica LSF | Construção Inteligente</title>
+<meta name="description" content="Visita técnica gratuita a uma casa em Light Steel Frame em montagem em São Carlos. Para arquitetos, engenheiros e estudantes.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --or: #E8610A; --or2: #F47B2E;
+    --g1: #1F2326; --g3: #4A4F54; --g4: #B8C4C6; --g5: #C9C2B8; --g6: #ECE7E1; --g7: #F5F2EE;
+    --dk: #0E3B43; --dk2: #15505A; --cy: #22D3EE; --white: #FFFFFF;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--g7); color: var(--g1); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+  .bebas { font-family: 'Bebas Neue', sans-serif; letter-spacing: .03em; text-transform: uppercase; }
+
+  nav { background: var(--dk); height: 64px; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--or); }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: .08em; color: var(--white); }
+  .logo span { color: var(--or); }
+  .back { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--g5); }
+  .back:hover { color: var(--or); }
+
+  .hero { background: radial-gradient(circle at 85% 15%, #17616C 0%, #0E3B43 60%); color: var(--white); padding: 5rem 2rem 4.5rem; }
+  .wrap { max-width: 1040px; margin: 0 auto; }
+  .tag { display: inline-block; border: 1px solid rgba(232,97,10,.45); background: rgba(232,97,10,.15); color: var(--or2); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: .35rem .8rem; margin-bottom: 1.4rem; }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(2.8rem, 7vw, 5.2rem); line-height: .95; text-transform: uppercase; margin-bottom: 1.4rem; }
+  h1 em { font-style: normal; color: var(--or); }
+  .lead { font-size: 1.08rem; color: var(--g4); max-width: 620px; margin-bottom: 2.2rem; }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.15); margin-bottom: 2.2rem; }
+  .fact { background: var(--dk); padding: 1.1rem 1.2rem; }
+  .fact small { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--or2); margin-bottom: .2rem; }
+  .fact b { font-size: 1.05rem; font-weight: 600; }
+  .btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: .1em; text-transform: uppercase; padding: .9rem 2.2rem; transition: background .2s, transform .15s; }
+  .btn-or { background: var(--or); color: var(--white); }
+  .btn-or:hover { background: var(--or2); transform: translateY(-2px); }
+  .btn-wa { background: #25D366; color: var(--white); }
+  .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+  section { padding: 4.5rem 2rem; }
+  .stag { display: flex; align-items: center; gap: .6rem; font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--or); margin-bottom: .7rem; }
+  .stag::before { content: ''; width: 28px; height: 2px; background: var(--or); }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(2.2rem, 4.5vw, 3.2rem); text-transform: uppercase; line-height: 1; margin-bottom: 2.2rem; }
+
+  .stops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--g5); border: 1px solid var(--g5); }
+  .stop { background: var(--white); padding: 1.8rem 1.6rem; display: flex; gap: 1.2rem; }
+  .stop-n { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; line-height: .9; color: var(--or); flex-shrink: 0; width: 2.4rem; }
+  .stop h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.35rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: .3rem; }
+  .stop p { font-size: .93rem; color: var(--g3); }
+
+  .for { background: var(--g6); }
+  .for-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+  .card { background: var(--white); border-top: 4px solid var(--or); padding: 1.6rem 1.4rem; }
+  .card h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.5rem; text-transform: uppercase; margin-bottom: .4rem; }
+  .card p { font-size: .93rem; color: var(--g3); }
+
+  .info { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+  .info ul { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+  .info li { display: flex; gap: .8rem; font-size: .97rem; }
+  .info li::before { content: ''; width: 7px; height: 7px; background: var(--or); flex-shrink: 0; margin-top: .55rem; }
+  .box { background: var(--dk); color: var(--white); padding: 2rem 1.8rem; }
+  .box h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.7rem; text-transform: uppercase; margin-bottom: .6rem; }
+  .box p { color: var(--g4); font-size: .95rem; margin-bottom: 1.4rem; }
+  .privacy { margin-top: 1rem; font-size: .8rem; color: var(--g4); }
+
+  footer { background: var(--dk); border-top: 3px solid var(--or); padding: 2rem; color: var(--g4); font-size: .82rem; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+  @media (max-width: 760px) {
+    nav { padding: 0 1rem; }
+    .logo { font-size: 1.2rem; white-space: nowrap; }
+    .back { font-size: .68rem; white-space: nowrap; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .facts { grid-template-columns: minmax(0, 1fr); }
+    .btns { flex-direction: column; }
+    .btn { width: 100%; }
+    section { padding: 3.2rem 1.25rem; }
+    .stops, .for-grid, .info { grid-template-columns: minmax(0, 1fr); }
+    .info { gap: 2rem; }
+    footer .wrap { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">Construção <span>Inteligente</span></a>
+  <a class="back" href="/">← Voltar ao site</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">Visita técnica gratuita · Vagas limitadas</div>
+    <h1>Veja uma casa em <em>Light Steel Frame</em> sendo montada</h1>
+    <p class="lead">Uma manhã dentro de uma obra real em São Carlos, com o Eng. Gustavo Gomes Penetra explicando cada etapa: das paredes montadas no canteiro até o fechamento. Para arquitetos, engenheiros e estudantes.</p>
+    <div class="facts">
+      <div class="fact"><small>Data</small><b>[DATA]</b></div>
+      <div class="fact"><small>Horário</small><b>[HORÁRIO] · cerca de 1h30</b></div>
+      <div class="fact"><small>Local</small><b>[BAIRRO], São Carlos</b></div>
+    </div>
+    <div class="btns">
+      <a class="btn btn-or" href="[LINK_DO_FORMULARIO]" target="_blank" rel="noopener">Quero me inscrever</a>
+      <a class="btn btn-wa" href="https://wa.me/5516997737268?text=Ol%C3%A1%20Gustavo%2C%20tenho%20interesse%20na%20visita%20t%C3%A9cnica%20LSF." target="_blank" rel="noopener">Tirar dúvidas no WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="stag">O que você vai ver</div>
+    <h2>Roteiro da visita</h2>
+    <div class="stops">
+      <div class="stop"><div class="stop-n">01</div><div><h3>Fundação e preparo</h3><p>Como a base recebe a estrutura metálica: nivelamento, ancoragens e por que a precisão aqui define o resto da obra.</p></div></div>
+      <div class="stop"><div class="stop-n">02</div><div><h3>Paredes montadas no canteiro</h3><p>Como as paredes de aço galvanizado são montadas na própria obra, do projeto modelado até a parede de pé.</p></div></div>
+      <div class="stop"><div class="stop-n">03</div><div><h3>Estrutura e contraventamento</h3><p>Ligações, fixações e como as paredes trabalham juntas para dar rigidez à casa.</p></div></div>
+      <div class="stop"><div class="stop-n">04</div><div><h3>Instalações dentro das paredes</h3><p>Elétrica e hidráulica passando pelos perfis, sem quebrar parede, e o que o projeto precisa prever.</p></div></div>
+      <div class="stop"><div class="stop-n">05</div><div><h3>Fechamento e isolamento</h3><p>Placas, membranas e isolamento termoacústico: as camadas que fazem o desempenho da casa.</p></div></div>
+      <div class="stop"><div class="stop-n">06</div><div><h3>Conversa aberta</h3><p>Perguntas sobre projeto, prazos, custos e como adaptar um projeto de alvenaria para LSF.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="for">
+  <div class="wrap">
+    <div class="stag">Para quem é</div>
+    <h2>Quem vai aproveitar mais</h2>
+    <div class="for-grid">
+      <div class="card"><h3>Arquitetos</h3><p>Entenda o que muda no projeto para LSF e ofereça uma alternativa mais rápida aos seus clientes.</p></div>
+      <div class="card"><h3>Engenheiros</h3><p>Veja de perto ligações, fixações e a sequência de montagem de uma obra real.</p></div>
+      <div class="card"><h3>Estudantes</h3><p>Conheça na prática um sistema construtivo industrializado que pouca gente vê de perto.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap info">
+    <div>
+      <div class="stag">Informações</div>
+      <h2>Antes de ir</h2>
+      <ul>
+        <li>Visita gratuita, em turmas de até [VAGAS] pessoas para todos verem de perto com segurança.</li>
+        <li>Inscrição obrigatória: o endereço exato é enviado a quem se inscrever.</li>
+        <li>Use calçado fechado e roupa confortável. É uma obra em andamento.</li>
+        <li>Você recebe a confirmação e um lembrete pelo WhatsApp na véspera.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Garanta sua vaga</h3>
+      <p>As inscrições fecham quando as vagas acabarem.</p>
+      <a class="btn btn-or" href="[LINK_DO_FORMULARIO]" target="_blank" rel="noopener" style="width:100%">Quero me inscrever</a>
+      <p class="privacy">Seus dados são usados só para organizar esta visita e falar com você sobre ela. Não compartilhamos com ninguém.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">Construção <span>Inteligente</span></span>
+    <span>Eng. Gustavo Gomes Penetra · Método Obra Assertiva · @eng.gustavopenetra</span>
+  </div>
+</footer>
+
+</body>
+</html>
