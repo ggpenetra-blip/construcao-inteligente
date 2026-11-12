@@ -123,19 +123,78 @@
   }
   .about-img-click:hover { opacity: .85; }
 
+  /* MENU CELULAR */
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .5rem; flex-direction: column; gap: 5px; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); transition: transform .25s, opacity .25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* TABLET */
+  @media (max-width: 960px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; }
+    .hero-l { padding: 4rem 2rem 3.5rem; }
+    .hero-r { padding: 1.5rem !important; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+    .stat:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.2); }
+    section, section[style] { padding: 4rem 2rem !important; }
+    .svc-grid { grid-template-columns: repeat(2, 1fr); }
+    .about { grid-template-columns: minmax(0, 1fr); }
+    .about-l { padding: 4rem 2rem; }
+    .about-txt, .hero-desc { max-width: 100%; }
+    .contact-sec { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  }
+
+  /* CELULAR */
+  @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .logo { font-size: 1.35rem; white-space: nowrap; }
+    .nav-btn { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links { display: none; position: absolute; top: 64px; left: 0; width: 100%; flex-direction: column; gap: 0; background: var(--dk); border-bottom: 3px solid var(--or); }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-top: 1px solid var(--dk2); }
+    .nav-links a { display: block; padding: 1rem 1.25rem; font-size: .85rem; }
+    .hero-l { padding: 3rem 1.25rem; }
+    .badge { font-size: .62rem; }
+    h1 { font-size: clamp(2.6rem, 13vw, 4rem); margin-bottom: 1.2rem; overflow-wrap: anywhere; }
+    .hero-desc { font-size: .95rem; margin-bottom: 2rem; }
+    .hero-btns { flex-direction: column; align-items: stretch; }
+    .hero-btns a { justify-content: center; text-align: center; }
+    .hero-r { padding: 1rem !important; }
+    .hero-r-tag { left: 1rem; bottom: 1rem; font-size: .9rem; padding: .5rem 1rem; }
+    .stat { padding: 1.2rem .6rem; }
+    .stat-n { font-size: 2.2rem; }
+    section, section[style] { padding: 3rem 1.25rem !important; }
+    .stitle { margin-bottom: 2rem; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .svc { padding: 1.6rem 1.25rem; }
+    .about-l { padding: 3rem 1.25rem; }
+    .about-cta { width: 100%; text-align: center; }
+    .frow { grid-template-columns: 1fr; }
+    .fsubmit { align-self: stretch; }
+    .cval { word-break: break-word; }
+    .faq-q { padding: 1.1rem 1.1rem; font-size: 1rem; }
+    .faq-a { padding: 1rem 1.1rem 1.3rem; }
+    footer { flex-direction: column; gap: .6rem; text-align: center; padding: 1.8rem 1.25rem; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">Constru&ccedil;&atilde;o <span>Inteligente</span></div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#servicos">Servi&ccedil;os</a></li>
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
   <button class="nav-btn">Or&ccedil;amento</button>
+  <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
 </nav>
 
 <section class="hero">
@@ -423,5 +482,20 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
+<script>
+function toggleMenu(btn) {
+  var menu = document.getElementById('nav-links');
+  var open = menu.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+document.querySelectorAll('#nav-links a').forEach(function (a) {
+  a.addEventListener('click', function () {
+    document.getElementById('nav-links').classList.remove('open');
+    var t = document.querySelector('.nav-toggle');
+    t.classList.remove('open'); t.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
 </body>
 </html>
